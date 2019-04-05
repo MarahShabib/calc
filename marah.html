@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Javascript MVC</title>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+
+<div id="hy">
+
+
+</div>
+<!-- end js-container -->
+
+
+
+<script>
+
+    class ListModel  {
+
+
+        addtwonumbers(first,second) {
+            
+                            
+       return eval(""+first+"+"+second);
+        }
+       divtwonumbers(first,second) {
+            
+                            
+       return eval(""+first+"/"+second);
+        }
+          multwonumbers(first,second) {
+            
+                            
+       return eval(""+first+"*"+second);
+        }  
+        subtwonumbers(first,second) {
+            
+                            
+       return eval(""+first+"-"+second);
+        }  
+        modtwonumbers(first,second) {
+            
+                            
+       return eval(""+first+"%"+second);
+        }
+        
+       sqrtwonumbers(first) {
+            
+                            
+       return eval(""+Math.sqrt(first));
+        }
+         sqr2twonumbers(first) {
+            
+                            
+       return eval(""+Math.sqrt(first));
+        }
+        
+    }
+    
+    class ListView {
+        
+        constructor(){
+        
+            
+    document.getElementById("hy"). innerHTML= " first: <input type='text' name='first' id='first'> Second: <input type='text' name='second' id='second'><br><br>                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <button id='plus'> &nbsp&nbsp + &nbsp&nbsp </button><button id='sub'> &nbsp&nbsp - &nbsp&nbsp </button><br>&nbsp&nbsp&nbsp<button id='mul'> &nbsp&nbsp * &nbsp&nbsp </button><button id='divide'> &nbsp&nbsp / &nbsp&nbsp </button><button id='mod' > &nbsp&nbsp % &nbsp&nbsp </button><br> <button id='sqr1'> &nbsp&nbsp&nbsp √first &nbsp&nbsp </button><button id='sqr2'> &nbsp&nbsp √Second &nbsp&nbsp</button> <br><br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Result: <input type='text' name='result' id='result'>  " ;        
+        }
+
+        
+        
+        getfirst(){
+                         
+                 return   document.getElementById("first").value ;
+            
+        
+        }
+        getsecond(){
+                         
+                 return   document.getElementById("second").value ;
+            
+        
+        }
+        settext(rs){
+            
+            document.getElementById("result").value=rs;
+            
+        }
+     
+
+
+    }
+
+    class ListController {
+        constructor(model, view) {
+            this._model = model;
+            this._view = view;
+            
+ document.getElementById("plus").addEventListener("click", function(){
+ //    document.getElementById("second").value =document.getElementById("first").value;
+  var x1;
+     
+     x1=model.addtwonumbers(view.getfirst(),view.getsecond());
+     view.settext(x1);
+     
+});
+            
+   document.getElementById("divide").addEventListener("click", function(){
+  var x1;
+     
+     x1=model.divtwonumbers(view.getfirst(),view.getsecond());
+     view.settext(x1);
+     
+});          
+            
+        document.getElementById("mul").addEventListener("click", function(){
+  var x1;
+     
+     x1=model.multwonumbers(view.getfirst(),view.getsecond());
+     view.settext(x1);
+     
+});          
+        document.getElementById("sub").addEventListener("click", function(){
+  var x1;
+     
+     x1=model.subtwonumbers(view.getfirst(),view.getsecond());
+     view.settext(x1);
+     
+});          
+        document.getElementById("mod").addEventListener("click", function(){
+  var x1;
+     
+     x1=model.modtwonumbers(view.getfirst(),view.getsecond());
+     view.settext(x1);
+     
+});          
+            document.getElementById("sqr1").addEventListener("click", function(){
+  var x1;
+     
+     x1=model.sqrtwonumbers(view.getfirst());
+     view.settext(x1);
+     
+});           
+            document.getElementById("sqr2").addEventListener("click", function(){
+  var x1;
+     
+     x1=model.sqr2twonumbers(view.getsecond());
+     view.settext(x1);
+     
+});         
+        }
+
+    }
+
+    window.addEventListener('load', () => {
+
+
+        model = new ListModel( ),
+            view = new ListView(model),
+        controller = new ListController(model, view);
+    
+
+    });
+</script>
+
+
+
+
+</body>
+
+</html>
